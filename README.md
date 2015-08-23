@@ -3,6 +3,7 @@
 Installing Hexo is quite easy. However, you do need to have a couple of other things installed first:
 - [Node.js](https://nodejs.org/ "访问NodeJs官方主页")
 - [Git](http://www.git-scm.com/download/ "访问git下载地址")
+
 ## Install Hexo Plugin
 If your computer already has these, congratulations! Just install Hexo with npm:
 ``` console 
