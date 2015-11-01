@@ -1,5 +1,79 @@
 <script src="<%- config.root %>js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript">
+    $(function(){
+      /*the back to top requirements much meet belows entries:
+      *-1. when the window scroll over 100px, the back to top will shown
+      *-2. use a html markup template
+      *-3. when the button is clicked, the window scroll to very top of the document and button much disppear at the same time
+      *-4. will impletement as an jquery plugin
+      */
+      $.fn.backToTop = function(options){
+        var defaults = {
+          width: '4em',
+          height: '4em',
+          background: '#a12321',
+          top: '90%',
+          lineHeight: '4em',
+          right: '2em',
+          display:'none',
+          textAlign: 'center',
+          content: 'Top',
+          speed: 500
+        };
+        var selector = {
+          btnBack: $('.backToTop')
+        };
+        var option = $.extend({},defaults,options);
+        //console.log('After embed' + option)
+        
+        function init(){
+          var self = this;
+          //console.log('Init ...');
+          var template = createTemplate();
+          console.log(option.width);
+          $('body').append(template);
+          $('.backToTop').css({
+            'width':option.width,
+            'height':option.height,
+            'position':'fixed',
+            'right':option.right,
+            'background':option.background,
+            'top':option.top,
+            'line-height':option.lineHeight,
+            'display':option.display,
+            'text-align':option.textAlign,
+            'cursor':'pointer'
+          });
+          //console.log('init complete');
+          var scroll = 0;
+
+          $(window).scroll(function(){
+            scroll = $(this).scrollTop();
+            //o.css("top",Math.max(80,260-scroll));
+            if($(this).scrollTop() > 60){
+              $('.backToTop').show().animate({opacity: 1},1300);
+            }else{
+              $('.backToTop').animate({opacity: 0},option.speed).hide();
+            }
+            
+          });
+        };
+        
+        function createTemplate(){
+          return "<div class='backToTop' id='backToTop'>"+defaults.content+"</div>";
+        };
+        //console.log('this = ');
+        init();
+        $('.backToTop').bind('click',function(){
+          //console.log('trigger click');
+          $('body,html').animate({scrollTop:0},option.speed);
+        })
+        
+      }
+      $('body').backToTop();
+    })
+  </script>
+<script type="text/javascript">
 $(document).ready(function(){ 
   $('.navbar').click(function(){
     $('header nav').toggleClass('shownav');
@@ -31,23 +105,24 @@ $(document).ready(function(){
     }
   });
   c.click(function(){
+
     a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
+    o.fadeIn('slow',function(){$(this).css('display', 'block');}).addClass('fadeIn');
     m.addClass('moveMain');
+
   });
   o.click(function(){
     o.css('display', 'none').removeClass('beforeFadeIn');
     a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
     m.removeClass('moveMain');
   });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
+
 });
 </script>
 <% if (is_post()) { %>
 <script type="text/javascript">
+var isMobile = false;
+isMobile = navigator.userAgent.match(/(iPhone|iPod|Android|ios|SymbianOS)/i) == null ? false: true;
 $(document).ready(function(){ 
   var ai = $('.article-content>iframe'),
       ae = $('.article-content>embed'),
@@ -76,17 +151,56 @@ $(document).ready(function(){
       ta.css("top",Math.max(140,320-$(this).scrollTop()));
     });
   };
-});
-$(window).scroll(function(){
+  if(!isMobile){
+  $(window).scroll(function(){
 
     if($(this).scrollTop() > 60){
       c.trigger('click');
+      
     }
     if($(this).scrollTop() < 50){
       o.trigger('click');
+      
     }
-  })
+  });
+}
+});
+
 </script>
+<script type="text/javascript">
+(function($){
+
+  $.fn.hightline = function(options){
+    var defaults = {
+      color: '#ddd',
+      weight:700,
+    };
+    options = $.extend({},defaults,options);
+    var tocs = $('.toc-aside .toc-link');
+    console.log('the size of the toc is '+ tocs.size());
+    return $(this).each(function(options){
+      var self = $(this);
+      $(window).bind('scroll',function(e){
+        var offset = self.offset();
+        var windowScrollTop = $(window).scrollTop();
+        if((windowScrollTop - offset.top) > -100){
+          var title = self.attr('id');
+          $('.toc-aside .toc-link').removeClass('tocOn');
+          $('.toc-aside .toc-link[href=#'+title+']').addClass('tocOn');
+        }
+      })
+
+    })
+  }
+
+$('.article-content>h2,.article-content>h3').hightline();
+
+
+})(jQuery)
+
+
+</script>
+
 <% } %>
 <% if ((page.layout=='post'||page.layout=='page')&&!theme.jiathis.enable) { %>
 <script type="text/javascript">
