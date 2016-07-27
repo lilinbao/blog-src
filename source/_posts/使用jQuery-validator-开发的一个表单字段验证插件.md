@@ -2,7 +2,7 @@ title: "使用jQuery validator 开发的一个表单字段验证插件"
 date: 2015-09-11 01:07:59
 alias: 总结与分享
 tags:
-- jquery
+- jQuery
 - 工具
 - 笔记
 categories: 
