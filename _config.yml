@@ -81,7 +81,8 @@ sitemap:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:linbao-lee/linbao-lee.github.com.git, master
+  repo: git@github.com:linbao-lee/linbao-lee.github.io.git
+  branch: master
   message: Site updated at {{ now("YYYY-MM-DD HH:mm:ss") }}
 
 
