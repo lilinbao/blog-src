@@ -29,3 +29,4 @@ node_modules
 /public/*
 /.deploy_git/*
 /.git/*
+/node_modules/

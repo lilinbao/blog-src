@@ -2,9 +2,9 @@ title: "使用Module Design Pattern编写的一个购物车模块"
 date: 2015-10-31 14:35:05
 alias: 
 tags: 
- - javascript
+ - Javascript
  - 语言学习
- - jquery
+ - jQuery
 categories: 
  - Lab
 

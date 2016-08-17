@@ -1,7 +1,7 @@
 title: "How to Write a Jquery Plugin Phase 1"
 date: 2015-05-24 17:57:47
 alias: 
-tags: jquery
+tags: jQuery
 categories: 语言学习
 
 ---
