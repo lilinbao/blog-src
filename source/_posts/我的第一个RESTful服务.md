@@ -9,7 +9,7 @@ categories: Lab
 ---
 
 本文讲述基于Java SE环境的Jersey官方文档中的示例simple-service,并在此基础上扩展自己定义的REST资源服务
-##从Maven原型中创建项目
+## 从Maven原型中创建项目
 所谓原型项目是指通过简单的maven命令就可以从Maven中央仓库中取回一个已经具备基本功能、依赖完好、编译和测试运行无误的示例项目。`mvn archetype:generate`可以这样理解：以指定的原型为模板，生成或者创建新的Maven项目。
 ``` stdout
 mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-grizzly2 \
@@ -17,7 +17,7 @@ mvn archetype:generate -DarchetypeArtifactId=jersey-quickstart-grizzly2 \
 -DgroupId=com.example -DartifactId=simple-service -Dpackage=com.example \
 -DarchetypeVersion=2.19
 ```
-##测试项目的可用性
+## 测试项目的可用性
 运行完上面的Maven命令后，Maven会在当前目录下生成一个simple-service的文件夹。进入simple-service目录，运行Maven测试：
 ``` stdout
 mvn clean test
@@ -133,7 +133,7 @@ $ mvn dependency:tree
 [INFO] ------------------------------------------------------------------------
 ```
 没有出现错误，来看看怎么创建RESTful服务
-##分析项目
+## 分析项目
 执行以下命令`mvn eclipse:eclipse`生成exlipse项目文件，并将项目导入eclipse
 ```stdout
 $ mvn eclipse:eclipse
@@ -290,7 +290,7 @@ public class MyResourceTest {
 
 服务起来以后，打开浏览器输入`localhost:8080/myapp/myresource` 并回车查看结果
 
-##扩展服务
+## 扩展服务
 上例只是一个实验，以这个为模式，让我们来建立一个我们更加熟悉的，即有service层，Dao层的三层服务
 
-###添加POJO实体类
+### 添加POJO实体类

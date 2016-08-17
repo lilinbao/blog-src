@@ -7,7 +7,7 @@ categories: 语言学习
 ---
 周末，可是没有忘记一直想自己封装一个jquery的插件，然后像boostrap那样，选择一个元素然后调用自己的方法，什么事都不用管它自己就帮你做好所有的一切，创建包围，注册监听事件，完成包尾工作，一切都是那么地从容。。。
 好吧，正好公司的项目也要用到一个关于文本的工具，一起来学一下吧
-##准备工作
+## 准备工作
 查阅一下编写一个jquery的基本要求：
 1. 在JQuery命名空间下声明只声明一个单独的名称
 2. 接受options参数，以便控制插件的行为
@@ -24,15 +24,15 @@ jQuery.fn.extend(object)   即 $.fn.extend(object)
 这2个API都是为了将自己编写的功能以插件的形式加入到 jquery 中.但是含义上是有区别的.
 `$.extend(object)` 这个函数是用来扩展 jQuery 本身, 也就是扩展 `"$"`的
 `$.fn.extend(object)` 这个函数用来为 jQuery 对象提供新的方法.所谓 jQuery 对象, 最常见的我们平时通过jQuery选择器获取的对象, 比如: `$("#id"), $(".class")` 等等.
-##插件主函数体中的this关键字
+## 插件主函数体中的this关键字
 这里的 this 是jQuery 对象, 也就是通过 $("#id"), $(".class") 之类的选择器获取的对象。
 `注意：`
   - 与each中的`this`有些不同，`$.each`中的`this`是DOM对象，那是因为`$.each`会自动把`jQuery`对象转换为DOM对象
   - 在主函数最后记得用`return this;`,是为了实现 jQuery 的链式表达式. 也就是 `return this;` 之后, 可以接着调用其他 jQuery 函数.
 
-##功能型插件(使用最多的jQuery插件)
+## 功能型插件(使用最多的jQuery插件)
 有两种写法，大家可以根据自己的爱好来写
-###方法定义在extend里：
+### 方法定义在extend里：
 ```javascript
 (function($) {  
     $.fn.extend({  
@@ -52,7 +52,7 @@ jQuery.fn.extend(object)   即 $.fn.extend(object)
     });  
 })(jQuery);  
 ```
-###方法定义在extend外：
+### 方法定义在extend外：
 ```javascript
 //create closure  
 (function($){  
@@ -110,7 +110,7 @@ $(function(){
     console.log(options);
 });
 ```
-##插件中的公有及私有函数
+## 插件中的公有及私有函数
 虽然 javascript 不是纯粹的面向对象的语言, 但是通过其强大的闭包功能, 也能构造出类似其他面向对象语言的公有/私有函数.
 上述两个插件中`functionA `与 `functionB`都是公有函数，可以被插件使用者所覆盖。
 下面示例中的`functionC`是私有函数，使用者不可以更改

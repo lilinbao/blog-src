@@ -7,7 +7,7 @@ categories: Project
 ---
 
 webstore是本人自己在本地建立的一个项目，主要是用来做测试，目的是用来研究SSH框架的使用，以下是一点点我做这个项目的经验，留下以备不时之需
-##Oracle
+## Oracle
 - **Oracle新建用户、角色，授权，建表空间**
 
 	*创建用户*
@@ -132,9 +132,9 @@ oracle清屏命令汇集：
  Oracle的SQL语句大全（摘）-- 复杂.
 {% endblockquote %}
 
-##Spring 4.x
+## Spring 4.x
 
-###Spring声明式事务配置管理方法
+### Spring声明式事务配置管理方法
 - Spring可以用xml配置能配符来匹配需要事务的业务方法，基于约束先于配置的法则，比如方法开头以add,update,delete,get云云
 - 也可以使用注解的方式为某些方法添加事务，两者选一样即可
 xml配置如下 
@@ -142,7 +142,7 @@ xml配置如下
 {% blockquote irelandken的专栏 http://blog.csdn.net/irelandken/article/details/7193123 Spring @Transactional声明式事务管理  %}
 Spring @Transactional声明式事务管理  getCurrentSession
 {% endblockquote %}
-##Hibernate 4.x
+## Hibernate 4.x
 {% blockquote Red Hat, Inc. https://docs.jboss.org/hibernate/orm/4.0/javadocs/deprecated-list.html Deprecated API %}
 Deprecated API List(Hibernate java doc ).
 {% endblockquote %}
@@ -199,19 +199,19 @@ public class Role implements Serializable{
 	private Set<Resources> resources = new HashSet<Resources>(0);
 
 ```
-###hibernate 的id生成策略问题
+### hibernate 的id生成策略问题
 - 若业务比较繁忙的表，建议一个表创建一个序列，如上所示
 - 若查询修改不是很频繁的表可以多个表共享一个序列，配置类时不在id上加generator就可以
 - `allocationSize=1`设定主键自增1
 
-##Struts 2.x
+## Struts 2.x
 ### ActionForward
 ActionForward是 Struts的核心类之一，其基类仅有4个属性`name / path / redirect / classname`。在基于Struts的Web应用程序开发过程中，Action操作完毕后程序会通过Struts的配置文件struts- config.xml链接到指定的ActionForward，传到Struts的核心类ActionServlet，ActionServlet使用 ActionForward提供的路径，将控制传递给下一个JSP或类。ActionForward控制接下来程序的走向。ActionForward代表一个应用的URI，它包括路径和参数，例如：`path=”/login.jsp”` 或`path=“/modify.do?method=edit&id=10”` ActionForward的参数除了在struts-config.xml和页面中设置外，还可以通过在Action类中添加参数，或重新在Action中创建一个ActionForward。
 actionForward的作用：封装转发路径，通俗点说就是说完成页面的跳转和转向。那它既然是转向，到底是转发还是重定向呢？默认的情况下，actionForward采用的是转发的方式进行页面跳转的。
 顺便说一下 转发和重定向的区别。最大的区别就是转发的时候，页面的url地址不变，而重定向的时候页面的url地址会发生变化。简单说明一下原因，因为转发的时候是采用的同一个request（请求），既然页面跳转前后是同一个request，页面url当然不会变了；而重定向采用的是2个request，因为是二次转发页面跳转前后的url当然会不同了。
 既然actionForward跳转的方式默认的是转发，那如果我非要用重定向的方式，该如何设置呢？恩，这很简单，大家都在struts-config.xml做过actionForward的配置吧，比如这句     `<forward name=”login” path=”/login.jsp” redirect=”true”/> `
-##Juint Test 4.x
-###Junit Test 输出建表语句
+## Juint Test 4.x
+### Junit Test 输出建表语句
 ```java
 public class HibernateSchemeExportTest {
 
@@ -236,7 +236,7 @@ public class HibernateSchemeExportTest {
 	}
 }
 ```
-##其他
+## 其他
 ### maven中net.sf.json报错的解决方法：加编译器版本号
 ```xml
 <dependency>
@@ -246,11 +246,11 @@ public class HibernateSchemeExportTest {
     <classifier>jdk15</classifier>
 </dependency>
 ```
-###struts2 输出 JSON
+### struts2 输出 JSON
 {% blockquote 杨胜寒 http://www.open-open.com/lib/view/open1325518231062.html Struts2返回JSON数据的具体应用范例  %}
 深入了解Struts2返回JSON数据的原理及具体应用范例
 {% endblockquote %}
-###JVM调优
+### JVM调优
 {% blockquote 神勇小白鼠-OSChina http://my.oschina.net/shootercn/blog/15393% JVM调优总结 %}
 JVM调优总结
 {% endblockquote %}

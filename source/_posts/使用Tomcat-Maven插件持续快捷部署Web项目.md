@@ -8,15 +8,15 @@ categories: Maven
 支持中文标题。。。这货
 
 到目前为止用maven还是蛮爽的，今天一直在测试项目，不断改不断发布不断重启也是醉了。。。所以上网找了一此资料，别说这个自动发布插件还不错，基本能满足需求，先记下来
-##准备工作
+## 准备工作
 1. 下载并安装tomcat,这里我选的是tomcat 7.0.62;
 2. 安装好的maven,并配置好能用
 3. 准备一个Maven Web项目
 
 网上关于怎么配置怎么建立maven web项目的资料很多，可以参考，建议多看几篇
-##Maven部署Web项目到Tomcat的配置
+## Maven部署Web项目到Tomcat的配置
 分别对tomat的tomcat-uses.xml和maven项目的pom.xml进行修改
-###配置Tomcat角色，用户
+### 配置Tomcat角色，用户
 ```xml
 <!-- tomcat-users.xml -->
 <tomcat-users>
@@ -102,7 +102,7 @@ categories: Maven
 	</configuration>
 </plugin>
 ```
-###布署项目到tomcat
+### 布署项目到tomcat
 先确保Tomcat服务器已经启动，然后cd到项目根目录，运行下面的命令：
 ```maven
 mvn clean install tomcat7:deploy
@@ -133,7 +133,7 @@ Uploaded: http://localhost:8080/manager/text/deploy?path=%2Fwebstore&update=true
 {% endblockquote %}
 然后我们就能在Tomcat安装目录的webapps目录下找到新部署的WAR包
 `注意:`初次部署用的是tomcat7:deploy命令，重新部署可以用tomcat7:redeploy命令（推荐统一用这个），Tomcat Maven插件支持的命令包括：run、shutdown、run-war-only、exec-war、standalone-war-only、deploy、standalone-war、undeploy、run-war、redeploy等。
-##遇到过的问题
+## 遇到过的问题
 第一次用到不是很顺利，遇到很多问题，好在有万能的google和度娘帮解决：
 1. 包的路径问题
 war打包插件, 有些时候可能会设定war包名称带版本号，有些时候不会，注意，当你不带版本号的时候tomcat-maven-plugin可能会报包找不到的情况
@@ -186,7 +186,7 @@ Cannot invoke Tomcat manager : Software caused connection abort: socket write er
 ```xml
 <Context antiJARLocking="true" antiResourceLocking="true">
 ```
-##写在最后
+## 写在最后
 
 {% blockquote 摘自:优雅先生 http://my.oschina.net/feichexia/blog/326893 开发过程使用Tomcat Maven插件持续快捷部署Web项目%}
 使用这种方式布署的局限性

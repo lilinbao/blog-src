@@ -5,8 +5,8 @@ tags: 笔记
 categories: Maven
 
 ---
-##各种数据库Hibernate链接配置
-###Derby
+## 各种数据库Hibernate链接配置
+### Derby
 **db driver maven dependency**
 ```xml
 <dependency>
@@ -24,7 +24,7 @@ hibernate.connection.username=any
 hibernate.connection.password=value
 hibernate.hbm2ddl.auto=update
 ```
-###MySQL
+### MySQL
 **db driver maven dependency**
 ```xml
 <dependency>
@@ -42,7 +42,7 @@ hibernate.connection.username=root
 hibernate.connection.password=
 hibernate.hbm2ddl.auto=update
 ```
-###H2
+### H2
 **db driver maven dependency**
 ```xml
 <dependency>
@@ -60,7 +60,7 @@ hibernate.connection.username=sa
 hibernate.connection.password=
 hibernate.hbm2ddl.auto=update
 ```
-###Oracle
+### Oracle
 **db driver maven dependency**
 ```xml
 <dependency>
@@ -92,7 +92,7 @@ hibernate.dbcp.ps.maxIdle = 0
 # More info in http://www.jroller.com/page/dashorst?entry=hibernate_3_1_something_performance1
 hibernate.jdbc.wrap_result_sets=true
 ```
-###PostgreSQL
+### PostgreSQL
 **db driver maven dependency**
 ```xml
 <dependency>
@@ -110,7 +110,7 @@ hibernate.connection.username=postgres
 hibernate.connection.password=postgres
 hibernate.hbm2ddl.auto=update
 ```
-###Microsoft SQL Server
+### Microsoft SQL Server
 **db driver maven dependency**
 ```xml
 <dependency>
@@ -128,7 +128,7 @@ hibernate.connection.username=sa
 hibernate.connection.password=
 hibernate.hbm2ddl.auto=update
 ```
-###HSQLDB 
+### HSQLDB 
 **db driver maven dependency**
 ```xml
 <dependency>

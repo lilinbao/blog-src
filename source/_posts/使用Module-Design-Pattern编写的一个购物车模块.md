@@ -15,7 +15,7 @@ categories:
 看了javascript design pattern，忍不住动手自己写了个购物车的模块，权当是加深印象吧，正好周末有的是时间。
 The Module Pattern，网上资料少之又少，看看还是不怎么理解，不过再回来翻看，似乎挺有趣的。模块模式，也译为模组模式，是一种通用的对代码进行模块化组织与定义的方式。这里所说的模块（Modules），是指实现某特定功能的一组方法和代码。
 模块模式使用了以下几种概念： 
-###闭包和立即执行的匿名函数
+### 闭包和立即执行的匿名函数
 模块模式使用了 JavaScript 的一个特性，即闭包（Closures）。
 ``` javascript 
 ;(function(){
@@ -28,7 +28,7 @@ The Module Pattern，网上资料少之又少，看看还是不怎么理解，�
 而在上面的代码中，我们定义了一个匿名的函数，并用括号包括起来，这个括号是函数的入口，我是这样理解的，如果函数名后面加上圆括号就表示立即调用（执行）这个函数里面的代码（花括号部分的代码），也叫Immediately-Invoked Function Expression（IIFE）
 这是模块模式的基本形式
 
-###输入参数
+### 输入参数
 
 Javascript没有块作用域，只有函数作用域，也就是说在一个函数内一个表达式要使用一个变量，那它首先是在离它最近的块中找，找不到则往外一层找，若还是找不到则看看全局作用域下有没有定义，若没有则报typeReferenceErr.另外，Javascript也非常有意思，比如变量的定义一般都是“被提前”到函数的开始第一句，但还是在原地初始化（若有）。
 看看下面的代码：
@@ -86,7 +86,7 @@ var MODULE = (function () {
 ```
 这段代码声明了一个变量 MODULE，它带有两个可访问的属性：moduleProperty 和 moduleMethod，其它的代码都封装在闭包中保持着私有状态。参考上文提过的参数输入，我们还可以通过参数引用其它全局变量。
 
-####输出简单对象
+#### 输出简单对象
 很多时候我们 return 一个对象作为模块的输出，比如上例就是。
 另外，使用对象直接量（Object Literal Notation）来表达 JavaScript 对象是很常见的。比如：var x = { p1: 1, p2: "2", f: function(){ /*... */ } }
 很多时候我们都能见到这样的模块化代码：
@@ -120,7 +120,7 @@ var Widget1 = {
 };
 ```
 
-####输出函数
+#### 输出函数
 有时候我们希望返回的并不是一个对象，而是一个函数。有两种需求要求我们返回一个函数，一种情况是我们需要它是一个函数，比如 jQuery，它是一个函数而不是一个简单对象；另一种情况是我们需要的是一个“类”而不是一个直接量，之后我们可以用 "new" 来实例它。目前版本的 JavaScript 并没有专门的“类”定义，但它却可以通过 function 来表达。
 ``` javascript
 var Cat = (function () {
@@ -137,7 +137,7 @@ tomcat.bark();
 ```
 为什么不直接定义一个 function 而要把它放在闭包里呢？简单点的情况，确实不需要使用 IIFE 这种形式，但复杂点的情况，在构造我们所需要的函数或是“类”时，若需要定义一些私有的函数，就有必要使用 IIFE 这种形式了。
 另外，在 ECMAScript5中，提出了 Object.create() 方法。这时可以将一个对象视作“类”，并使用 Object.create() 进行实例化，不需使用 "new"。
-###Revealing Module Pattern输出对象直接量
+### Revealing Module Pattern输出对象直接量
 前面已经提到一种形式是输出对象直接量（Object Literal Notation），而 Revealing Module Pattern 其实就是这种形式，只是做了一些限定。这种模式要求在私有范围内中定义变量和函数，然后返回一个匿名对象，在该对象中指定要公开的成员。参见下面的代码：
 ``` javascript
 var MODULE = (function () {
@@ -153,9 +153,9 @@ var MODULE = (function () {
 }());
 ```
 
-##模块模式的变化
+## 模块模式的变化
 
-###扩展
+### 扩展
 上面的举例都是在一个地方定义模块，如果我们需要在数个文件中分别编写一个模块的不同部分该怎么办呢？或者说，如果我们需要对已有的模块作出扩展该怎么办呢？其实也很简单，将模块对象作为参数输入，扩展后再返回自己就可以了。比如：
 ```javascript 
 var MODULE = (function (my) {
@@ -168,7 +168,7 @@ var MODULE = (function (my) {
 ```
 上面的代码为对象 MODULE 增加了一个 "anotherMethod" 方法。
 
-###松耦合扩展（Loose Augmentation）
+### 松耦合扩展（Loose Augmentation）
 上面的代码要求 MODULE 对象是已经定义过的。如果这个模块的各个组成部分并没有加载顺序要求的话，其实可以允许输入的参数为空对象，那么我们将上例中的参数由 MODULE 改为 MODULE || {} 就可以了：
 ``` javascript
 var MODULE = (function (my) {
@@ -177,7 +177,7 @@ var MODULE = (function (my) {
 }(MODULE || {}));
 ```
 
-###紧耦合扩展（Tight Augmentation）
+### 紧耦合扩展（Tight Augmentation）
 与上例不同，有时我们要求在扩展时调用以前已被定义的方法，这也有可能被用于覆盖已有的方法。这时，对模块的定义顺序是有要求的。
 ```javascript
 var MODULE = (function (my) {
@@ -192,7 +192,7 @@ var MODULE = (function (my) {
 }(MODULE));
 ```
 
-###克隆与继承（Cloning and Inheritance）
+### 克隆与继承（Cloning and Inheritance）
 ```javascript
 var MODULE_TWO = (function (old) {
     var my = {},
@@ -225,7 +225,7 @@ var MODULE_TWO = (function (old) {
   return my;
 }(MODULE));
 ```
-###各种形式的混合
+### 各种形式的混合
 以上介绍了常见的几种模块化形式，实际应用中有可能是这些形式的混合体。比如：
 ```javascript
 var UTIL = (function (parent, $) {
