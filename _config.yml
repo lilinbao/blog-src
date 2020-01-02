@@ -62,7 +62,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: linbao
+## theme: linbao
+theme: vexo
 
 Plugins:
  - hexo-generator-sitemap
